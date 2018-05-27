@@ -5,6 +5,9 @@
 ** JS has no built in deep value equality
 ** Mutating assignments return value assigned not the object
 ** Serialising and unpacking is the fastest way to do a deep clone
+** Set state means this, means controllers merge with views
+*** Can you access the state externally?
+*** Assuming you can't. You wouldn't couple that way in rails. Why in react?
 * Tasks
 ** TODO try it with setState() on the root
 ** DONE Try immutable.js

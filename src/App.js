@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
 import './App.css';
 import { setUserName, setEmail, setPassword } from './Controller';
-import { getState } from './Repository';
 
 class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            userName: 'lcampbell',
+            email: 'lcampbellmcpherson@zendesk.com',
+            password: 'password123'
+        };
+    }
+
     render() {
         console.log("rendering App");
-        return <Form {...getState()} />;
+        return <Form {...this.state} />;
     }
 }
 
