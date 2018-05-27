@@ -5,8 +5,7 @@ function deepClone(objectToClone) {
     return JSON.parse(JSON.stringify(objectToClone));
 }
 
-export function setUserName() {
-    return async function(event) {
+export async function setUserName(event) {
         const newValue = event.target.value;
         const initialState = deepClone(getState());
         console.log("initial state", initialState);
@@ -25,8 +24,6 @@ export function setUserName() {
                     isEqual(initialState, newState),
                     initialState,
                     newState);
-
-    };
 }
 
 export function setEmail() {};
