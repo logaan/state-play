@@ -6,7 +6,14 @@
 ** Mutating assignments return value assigned not the object
 ** Serialising and unpacking is the fastest way to do a deep clone
 * Tasks
-** TODO try it with setState() on the root
+** DONE try it with setState() on the root
+   CLOSED: [2018-05-28 Mon 00:58]
+*** Causes everything to re-render regardless
+*** Even if we have a component that takes no args
+*** Getting at the state requires a circular dependency
+*** If you chose not to get the state then you're coupling behavior to presentation
+**** It'd be like writing your rails controller actions in with your views
+**** That's not a kind of coupling we'd accept
 ** DONE Try immutable.js
    CLOSED: [2018-05-28 Mon 00:28]
 *** Not worth using
