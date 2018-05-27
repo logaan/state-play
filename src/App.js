@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { setValue } from './Controller';
+import { setUserName, setEmail, setPassword } from './Controller';
 import { getState } from './Repository';
 
 class App extends Component {
@@ -10,38 +10,53 @@ class App extends Component {
     }
 }
 
-function Form({name, age, email}) {
+function Form({userName, email, password}) {
     console.log("rendering Form");
     return (
         <div className="App">
-            <p>
-                <label>
-                    Name:<br />
-                    <input name="name"
-                           value={name}
-                           onChange={setValue('name')} />
-                </label>
-            </p>
-
-            <p>
-                <label>
-                    Age:<br />
-                    <input name="age" value={age}/>
-                </label>
-            </p>
-
-            <EmailField value={email} />
+            <UserName value={userName} />
+            <Email value={email} />
+            <Password value={password} />
         </div>
     );
 }
 
-function EmailField({ value }) {
-    console.log("rendering EmailField");
+function UserName({ value }) {
+    return (<p>
+        <label>
+            User name:<br />
+            <input name="userName"
+                   value={value}
+                   onChange={setUserName} />
+        </label>
+    </p>);
+}
+
+function Email({ value }) {
+    console.log("rendering Email");
     return (
         <p>
             <label>
                 Email:<br />
-                <input name="email" value={value}/>
+                <input
+                    name="email"
+                    value={value}
+                    onChange={setEmail} />
+            </label>
+        </p>
+    );
+}
+
+function Password({ value }) {
+    console.log("rendering Password");
+    return (
+        <p>
+            <label>
+                Password:<br />
+                <input
+                    name="password"
+                    value={value}
+                    onChange={setPassword} />
             </label>
         </p>
     );

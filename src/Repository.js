@@ -1,9 +1,9 @@
 import { root } from './index';
 
 var state = {
-    name: "Logan Campbell",
-    age: 30,
-    email: "lcampbellmcpherson@zendesk.com"
+    userName: 'lcampbell',
+    email: 'lcampbellmcpherson@zendesk.com',
+    password: 'password123'
 };
 
 export function getState() {

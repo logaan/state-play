@@ -1,21 +1,33 @@
 import { getState, swapState } from './Repository';
+import { isEqual } from 'lodash';
 
-export function setValue(name) {
+function deepClone(objectToClone) {
+    return JSON.parse(JSON.stringify(objectToClone));
+}
+
+export function setUserName() {
     return async function(event) {
         const newValue = event.target.value;
-        console.log("initial state", getState());
+        const initialState = deepClone(getState());
+        console.log("initial state", initialState);
 
-        console.log("setting", name, "to", newValue);
+        console.log("setting username to", newValue);
         swapState(state => {
-            state[name] = newValue;
+            state['userName'] = newValue;
             return state;
         });
 
         const response = await fetch('https://jsonplaceholder.typicode.com/users/1');
-        const json = await response.json();
-        console.log("json", json);
-        console.log("after response state", getState());
-        console.log("changedSinceInitial?", getState());
+        await response.json();
+
+        const newState = getState();
+        console.log("same as initial?",
+                    isEqual(initialState, newState),
+                    initialState,
+                    newState);
 
     };
 }
+
+export function setEmail() {};
+export function setPassword() {};

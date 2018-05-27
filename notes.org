@@ -1,8 +1,19 @@
 * Observations
 ** Calling forceUpdate() on the root causes the email component to re-render
+** Can't use object destructing with immutable.js
+*** Can with a babel plugin maybe?
+** JS has no built in deep value equality
+** Mutating assignments return value assigned not the object
+** Serialising and unpacking is the fastest way to do a deep clone
 * Tasks
 ** TODO try it with setState() on the root
-** TODO try it with immutable.js
+** DONE Try immutable.js
+   CLOSED: [2018-05-28 Mon 00:28]
+*** Not worth using
+*** The dealbreaker was no object destructuring, will make views ugly
+*** But it does mean you'll end up defensively cloning sometimes
+**** A lot less than you'd destructure though
+**** And perhaps you can be selective about what values you care about
 * Goal
 ** minimal boilerplate
 ** minimal re-rendering
