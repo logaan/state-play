@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
 import { setValue } from './Controller';
-import { state } from './Repository';
+import { getState } from './Repository';
 
 class App extends Component {
     render() {
         console.log("rendering App");
-        return <Form {...state} />;
+        return <Form {...getState()} />;
     }
 }
 

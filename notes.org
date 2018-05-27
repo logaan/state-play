@@ -1,0 +1,33 @@
+* Observations
+** Calling forceUpdate() on the root causes the email component to re-render
+* Tasks
+** TODO try it with setState() on the root
+** TODO try it with immutable.js
+* Goal
+** minimal boilerplate
+** minimal re-rendering
+** boringly obvious data flow
+** no use of this
+* How minimal can we get?
+** Controllers can't be functional
+*** Controllers can make Ajax calls, set timers, and do other async things
+*** They need to be able to change the state based on the result of those async things
+*** They may also need to respond in the future to the state of the application at that time
+**** So they'll need to make calls to getState
+*** This means they can't be pure functions.
+**** They could be if we had them return something like an IO monad
+***** But that's not helping anyone
+* Test case
+** Username field
+*** Flow
+**** User enters username
+**** We check with the server whether it's already taken
+**** We update the error information for the field
+***** Only if the name has not changed since we checked
+*** Interesting points
+**** Our response to user input has an async action
+***** We would like to be able to handle this with async/await
+***** Or at the very least .then() chains
+***** Redux would have us return thunks?
+**** We need a copy of the original value and the new
+**** We're writing back to the state
