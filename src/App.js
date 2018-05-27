@@ -4,12 +4,14 @@ import { setValue } from './Controller';
 import { state } from './Repository';
 
 class App extends Component {
-  render() {
-    return <Form {...state} />;
-  }
+    render() {
+        console.log("rendering App");
+        return <Form {...state} />;
+    }
 }
 
 function Form({name, age, email}) {
+    console.log("rendering Form");
     return (
         <div className="App">
             <p>
@@ -28,13 +30,20 @@ function Form({name, age, email}) {
                 </label>
             </p>
 
-            <p>
-                <label>
-                    Email:<br />
-                    <input name="email" value={email}/>
-                </label>
-            </p>
+            <EmailField value={email} />
         </div>
+    );
+}
+
+function EmailField({ value }) {
+    console.log("rendering EmailField");
+    return (
+        <p>
+            <label>
+                Email:<br />
+                <input name="email" value={value}/>
+            </label>
+        </p>
     );
 }
 

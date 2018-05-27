@@ -10,3 +10,7 @@ export function setValue(name) {
         root.forceUpdate();
     };
 }
+
+// Calling forceUpdate() on the root causes the email component to re-render
+// TODO try it with setState() on the root
+// TODO try it with immutable.js
